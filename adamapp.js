@@ -8,14 +8,22 @@ if (Meteor.isClient) {
 
   Template.hello.events({
     'click': function () {
-        var myPix = new Array("lion.jpg", "tiger.jpg", "bear.jpg");
+        var myPix = new Array("lion", "tiger", "bear");
         
         var randomNr = Math.floor((Math.random() * myPix.length));
         while (previousNr == randomNr) {
             var randomNr = Math.floor((Math.random() * myPix.length));
         }
-        document.getElementById("myPicture").src = myPix[randomNr];
+        document.getElementById("myPicture").src = ((myPix[randomNr])+".jpg");
         previousNr = randomNr;
+        
+        var soundFile = ((myPix[randomNr])+".mp3")
+        
+        var sound = new Howl({
+            urls: [soundFile]
+        }).play();
+
+
     }
   });
 }
