@@ -8,7 +8,10 @@ if (Meteor.isClient) {
 
   Template.hello.events({
     'click': function () {
-        var myPix = new Array("lion", "tiger", "bear");
+        var myPix = new Array("bear", "bee", "cat", "cow", "dog", "duck",
+                              "elephant", "fox", "goat", "hippo", "lion",
+                              "monkey", "mosquito", "mouse", "owl", "parrot",
+                              "pig", "polar-bear", "rabbit", "squirrel", "tiger");
         
         var randomNr = Math.floor((Math.random() * myPix.length));
         while (previousNr == randomNr) {
