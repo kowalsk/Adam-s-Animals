@@ -1,18 +1,21 @@
 if (Meteor.isClient) {
+
+    var previousNr; // used in 'click' function to prevent the same picture showing again
+    
     Template.hello.helpers({
-    counter: function () {
-      return 88;
-    }    
+    counter: function () {    }    
   });
 
   Template.hello.events({
     'click': function () {
         var myPix = new Array("lion.jpg", "tiger.jpg", "bear.jpg");
         
-        var randomNr = ;
-        console.log("PK: Image clicked", randomNr);
-
-        document.getElementById("myPicture").src = myPix[Math.floor((Math.random() * myPix.length))];
+        var randomNr = Math.floor((Math.random() * myPix.length));
+        while (previousNr == randomNr) {
+            var randomNr = Math.floor((Math.random() * myPix.length));
+        }
+        document.getElementById("myPicture").src = myPix[randomNr];
+        previousNr = randomNr;
     }
   });
 }
